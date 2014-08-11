@@ -1,6 +1,6 @@
 #include "PhysicsTest.h"
 #include <cmath>
-#include "../testResource.h"
+#include "testResource.h"
 USING_NS_CC;
 
 namespace
@@ -20,10 +20,13 @@ namespace
         CL(PhysicsContactTest),
         CL(PhysicsPositionRotationTest),
         CL(PhysicsSetGravityEnableTest),
-#else 
+#else
         CL(PhysicsDemoDisabled),
 #endif
     };
+    
+     
+    
     
     static int sceneIdx=-1;
 #define MAX_LAYER (sizeof(createFunctions) / sizeof(createFunctions[0]))

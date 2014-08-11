@@ -22,92 +22,16 @@
 #include <WS2tcpip.h>
 #endif
 #include "cocostudio/CocoStudio.h"
-#include "UITest/UITest.h"
+#include "VisibleRect.h"
+#include "testBasic.h"
+#include "PhysicsTest.h"
 
 typedef struct _Controller{
 	const char *test_name;
 	std::function<TestScene*()> callback;
 } Controller;
 Controller g_aTestNames[] = {
-
-    //
-    // TESTS MUST BE ORDERED ALPHABETICALLY
-    //     violators will be prosecuted
-    //
     { "Node: Physics", []() { return new PhysicsTestScene(); } },
-	{ "Accelerometer", []() { return new PhysicsTestScene(); } },//AccelerometerTestScene
-	{ "ActionManager", [](){return new ActionManagerTestScene(); } },
-	{ "Actions - Basic", [](){ return new ActionsTestScene(); } },
-	{ "Actions - Ease", [](){return new ActionsEaseTestScene();} },
-	{ "Actions - Progress", [](){return new ProgressActionsTestScene(); } },
-	{ "Audio - CocosDenshion", []() { return new CocosDenshionTestScene(); } },
-	{ "Box2d - Basic", []() { return new Box2DTestScene(); } },
-	{ "Box2d - TestBed", []() { return new Box2dTestBedScene(); } },
-	{ "Bugs", []() { return new BugsTestScene(); } },
-	{ "Chipmunk", []() { return new ChipmunkAccelTouchTestScene(); } },
-	{ "Click and Move", [](){return new ClickAndMoveTestScene(); } },
-	{ "Configuration", []() { return new ConfigurationTestScene(); } },
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_WINRT)
-	{ "Console", []() { return new ConsoleTestScene(); } },
-
-#endif
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_WINRT)
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_EMSCRIPTEN)
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_NACL)
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_BADA)
-	{ "Curl", []() { return new CurlTestScene(); } },
-#endif
-#endif
-#endif
-#endif
-#endif
-	{ "Current Language", []() { return new CurrentLanguageTestScene(); } },
-    { "EventDispatcher", []() { return new EventDispatcherTestScene(); } },
-	{ "Effects - Advanced", []() { return new EffectAdvanceScene(); } },
-	{ "Effects - Basic", [](){return new EffectTestScene();} },
-	{ "Extensions", []() { return new ExtensionsTestScene(); } },
-	{ "FileUtils", []() { return new FileUtilsTestScene(); } },
-	{ "Fonts", []() { return new FontTestScene(); } },
-	{ "Interval", [](){return new IntervalTestScene(); } },
-	{ "Keyboard", []() { return new KeyboardTestScene(); } },
-	{ "Keypad", []() { return new KeypadTestScene(); } },
-	{ "Node: Clipping", []() { return new ClippingNodeTestScene(); } },
-	{ "Node: Draw", [](){return new DrawPrimitivesTestScene();} },
-    { "Node: Label - New API", [](){return new AtlasTestSceneNew(); } },
-	{ "Node: Label - Old API", [](){return new AtlasTestScene(); } },
-	{ "Node: Layer", [](){return new LayerTestScene();} },
-	{ "Node: Menu", [](){return new MenuTestScene();} },
-	{ "Node: MotionStreak", [](){return new MotionStreakTestScene();} },
-	{ "Node: Node", [](){return new CocosNodeTestScene();} },
-	{ "Node: Parallax", [](){return new ParallaxTestScene(); } },
-	{ "Node: Particles", [](){return new ParticleTestScene(); } },
-	{ "Node: Physics", []() { return new PhysicsTestScene(); } },
-	{ "Node: RenderTexture", [](){return new RenderTextureScene(); } },
-	{ "Node: Scene", [](){return new SceneTestScene();} },
-	{ "Node: Spine", []() { return new SpineTestScene(); } },
-	{ "Node: Sprite", [](){return new SpriteTestScene(); } },
-    { "Node: Sprite3D", [](){  return new Sprite3DTestScene(); }},
-	{ "Node: TileMap", [](){return new TileMapTestScene(); } },
-	{ "Node: Text Input", [](){return new TextInputTestScene(); } },
-    { "Node: UI", [](){  return new UITestScene(); }},
-    { "Mouse", []() { return new MouseTestScene(); } },
-	{ "MutiTouch", []() { return new MutiTouchTestScene(); } },
-	{ "Performance tests", []() { return new PerformanceTestScene(); } },
-    { "Renderer", []() { return new NewRendererTestScene(); } },
-    { "ReleasePool", [](){ return new ReleasePoolTestScene(); } },
-	{ "Rotate World", [](){return new RotateWorldTestScene(); } },
-	{ "Scheduler", [](){return new SchedulerTestScene(); } },
-	{ "Shader - Basic", []() { return new ShaderTestScene(); } },
-    { "Shader - Sprite", []() { return new ShaderTestScene2(); } },
-	{ "Texture2D", [](){return new TextureTestScene(); } },
-	{ "TextureCache", []() { return new TextureCacheTestScene(); } },
-	{ "TexturePacker Encryption", []() { return new TextureAtlasEncryptionTestScene(); } },
-	{ "Touches", [](){return new PongScene();} },
-	{ "Transitions", [](){return new TransitionsTestScene();} },
-    { "Unit Test", []() { return new UnitTestScene(); }},
-	{ "UserDefault", []() { return new UserDefaultTestScene(); } },
-	{ "Zwoptex", []() { return new ZwoptexTestScene(); } },
 };
 
 static int g_testCount = sizeof(g_aTestNames) / sizeof(g_aTestNames[0]);
